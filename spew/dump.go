@@ -309,6 +309,7 @@ func (d *dumpState) dump(v reflect.Value) {
 		}
 	}
 
+	d.w.Write([]byte("\033[0;32m"))
 	switch kind {
 	case reflect.Invalid:
 		// Do nothing.  We should never get here since invalid has already
@@ -446,6 +447,7 @@ func (d *dumpState) dump(v reflect.Value) {
 			fmt.Fprintf(d.w, "%v", v.String())
 		}
 	}
+	d.w.Write([]byte("\033[0;0m"))
 }
 
 // fdump is a helper function to consolidate the logic from the various public
